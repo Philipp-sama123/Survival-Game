@@ -1,12 +1,14 @@
-using System;
 using UnityEngine;
 
-namespace _Game
+namespace _Game.Player.Scripts
 {
     public class InputManager : MonoBehaviour
     {
         private PlayerControls playerControls;
         private Vector2 movementInput;
+
+        public float verticalMovementInput;
+        public float horizontalMovementInput;
 
         private void OnEnable()
         {
@@ -22,6 +24,17 @@ namespace _Game
         private void OnDisable()
         {
             playerControls.Disable();
+        }
+
+        public void HandleAllInputs()
+        {
+            HandleMovementInput();
+        }
+
+        private void HandleMovementInput()
+        {
+            verticalMovementInput = movementInput.y;
+            horizontalMovementInput = movementInput.x;
         }
     }
 }
