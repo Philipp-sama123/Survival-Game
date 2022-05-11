@@ -27,7 +27,7 @@ namespace _Game.Scripts
 
         private void LateUpdate()
         {
-            cameraManager.HandleAllCameraMovement(); 
+            // cameraManager.HandleAllCameraMovement(); 
         }
     }
 }

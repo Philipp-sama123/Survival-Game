@@ -59,8 +59,8 @@ namespace _Game.Scripts
             Vector3 rotation;
             Quaternion targetRotation;
 
-            lookAngle = lookAngle + ( /*inputManager.cameraInputX * */ cameraLookSpeed);
-            pivotAngle = pivotAngle - ( /*inputManager.cameraInputY * */ cameraPivotSpeed);
+            lookAngle += (inputManager.horizontalCameraInput * cameraLookSpeed);
+            pivotAngle -= (inputManager.verticalCameraInput * cameraPivotSpeed);
             pivotAngle =
                 Mathf.Clamp(pivotAngle, minimumPivotAngle,
                     maximumPivotAngle); // to clap the maximum and minimum values of the pivot angle 

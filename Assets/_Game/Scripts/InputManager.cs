@@ -5,17 +5,25 @@ namespace _Game.Scripts
     public class InputManager : MonoBehaviour
     {
         private PlayerControls playerControls;
-        private Vector2 movementInput;
         private AnimatorManager animatorManager;
+
+        private Vector2 movementInput;
+        private Vector2 cameraInput;
+
         public float verticalMovementInput;
         public float horizontalMovementInput;
+
+        public float verticalCameraInput;
+        public float horizontalCameraInput;
 
         private void OnEnable()
         {
             if (playerControls == null)
             {
                 playerControls = new PlayerControls();
+
                 playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
+                playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
             }
 
             playerControls.Enable();
@@ -34,6 +42,13 @@ namespace _Game.Scripts
         public void HandleAllInputs()
         {
             HandleMovementInput();
+            HandleCameraInput();
+        }
+
+        private void HandleCameraInput()
+        {
+            horizontalCameraInput = cameraInput.x;
+            verticalCameraInput = cameraInput.y;
         }
 
         private void HandleMovementInput()
