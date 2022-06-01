@@ -15,7 +15,6 @@ namespace _Game.Scripts
 
         public float verticalCameraInput;
         public float horizontalCameraInput;
-
         private void OnEnable()
         {
             if (playerControls == null)
@@ -56,8 +55,9 @@ namespace _Game.Scripts
             verticalMovementInput = movementInput.y;
             horizontalMovementInput = movementInput.x;
             // use just for no weapon (!) 
-            float moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalMovementInput) + Mathf.Abs(verticalMovementInput));
-            animatorManager.UpdateAnimatorValues(0, moveAmount);
+           // float moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalMovementInput) + Mathf.Abs(verticalMovementInput));
+            animatorManager.UpdateAnimatorValues(horizontalMovementInput, verticalMovementInput);
+            
         }
     }
 }

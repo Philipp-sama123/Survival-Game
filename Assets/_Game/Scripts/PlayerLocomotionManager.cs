@@ -28,10 +28,8 @@ namespace _Game.Scripts
 
         private void HandleMovement()
         {
-            moveDirection = cameraObject.forward * inputManager.verticalMovementInput;
-            moveDirection += cameraObject.right * inputManager.horizontalMovementInput;
-            moveDirection.Normalize();
-            moveDirection.y = 0;
+            moveDirection = new Vector3(inputManager.horizontalMovementInput, 0,
+                inputManager.verticalMovementInput);
 
             moveDirection *= movementSpeed;
 
@@ -53,9 +51,9 @@ namespace _Game.Scripts
 
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
             Quaternion playerRotation =
-                Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+                Quaternion.SlerpUnclamped(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
-            transform.rotation = playerRotation;
+            // transform.rotation = playerRotation;
         }
     }
 }
